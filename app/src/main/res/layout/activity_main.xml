@@ -9,8 +9,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Okhttp"
-        android:onClick="okhttp"
+        android:text="okHttp"
+        android:onClick="okHttp"
         />
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="retrofit"
+        android:onClick="retrofit"
+        />
 </LinearLayout>
