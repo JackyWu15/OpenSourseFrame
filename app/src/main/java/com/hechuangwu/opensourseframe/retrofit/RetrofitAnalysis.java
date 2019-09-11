@@ -390,7 +390,6 @@ public class RetrofitAnalysis {
                         public Type responseType() {
                             return responseType;
                         }
-
                         //观察者模式
                         @Override
                         public <R> Object adapt(Call<R> call) {//接口调用时执行
@@ -405,9 +404,8 @@ public class RetrofitAnalysis {
                                 observable = responseObservable;
                             }
                             if (scheduler != null) {
-                                observable = observable.subscribeOn( scheduler );//调用subscribeOn
+                                observable = observable.subscribeOn( scheduler );//调用subscribeOn，执行订阅，此处看rxjava源码分析
                             }
-
                             return observable;//返回observable
                         }
                     }

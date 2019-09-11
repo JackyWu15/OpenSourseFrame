@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.hechuangwu.opensourseframe.okhttp.OkHttpActivity;
 import com.hechuangwu.opensourseframe.retrofit.RetrofitActivity;
+import com.hechuangwu.opensourseframe.rxjava.RxJava2Activity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,5 +26,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void okHttp(View view) {
         startActivity( new Intent( this, OkHttpActivity.class ) );
+    }
+
+    public void rxJava(View view) {
+
+        startActivity( new Intent( this, RxJava2Activity.class ) );
     }
 }
