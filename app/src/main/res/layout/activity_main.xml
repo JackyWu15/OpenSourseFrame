@@ -23,7 +23,19 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="rxjava"
+        android:text="rxJava"
         android:onClick="rxJava"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="glide"
+        android:onClick="glide"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="leakCanary"
+        android:onClick="leakCanary"
         />
 </LinearLayout>
