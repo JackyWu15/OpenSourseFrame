@@ -34,10 +34,12 @@ public class EventBusActivity extends AppCompatActivity {
     }
 
     public void send(View view) {
-        EventBus.getDefault().post( new MessageEvent( "哈哈" ) );
-        EventBus.getDefault().postSticky( new MessageEvent( "嘻嘻" ) );
+        EventBus.getDefault().post( new MessageEvent( "哈哈" ) );//普通发送
+
+        EventBus.getDefault().postSticky( new MessageEvent( "嘻嘻" ) );//粘性发送
     }
 
+    //ThreadMode:线程 priority：优先级 sticky：是否粘性
     @Subscribe(threadMode = ThreadMode.MAIN, priority = 2, sticky = true)
     public void onMessageEventPost(MessageEvent data) {
         Log.i( TAG, "onMessageEventPost:>>>"+data.getMsg() );
