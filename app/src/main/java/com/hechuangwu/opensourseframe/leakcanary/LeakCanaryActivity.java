@@ -55,7 +55,7 @@ public class LeakCanaryActivity extends AppCompatActivity {
     }
 
 
-    //非静态内部类默认持有外部类，静态实例的生命周期和应用的生命周期一样长，导致静态实例一直持有外部类
+    //非静态内部类默认持有外部类，而静态实例一直持有外部类，间接持有了外部类
     private static InnerClass mInnerClass = null;
     private void staticLeak(){
         if (mInnerClass == null) {

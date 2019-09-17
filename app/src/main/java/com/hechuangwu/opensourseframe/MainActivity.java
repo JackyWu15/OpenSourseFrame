@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.hechuangwu.opensourseframe.eventbus.EventBusActivity;
 import com.hechuangwu.opensourseframe.glide.GlideActivity;
 import com.hechuangwu.opensourseframe.leakcanary.LeakCanaryActivity;
 import com.hechuangwu.opensourseframe.okhttp.OkHttpActivity;
@@ -39,4 +40,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity( new Intent( this, LeakCanaryActivity.class ) );
     }
 
+    public void eventBus(View view) {
+        startActivity( new Intent( this, EventBusActivity.class ) );
+    }
 }
