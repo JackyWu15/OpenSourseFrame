@@ -38,4 +38,5 @@ dependencies {
     releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
 
     implementation 'org.greenrobot:eventbus:3.1.1'
+
 }

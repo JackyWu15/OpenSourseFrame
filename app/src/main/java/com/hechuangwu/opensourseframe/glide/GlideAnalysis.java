@@ -12,6 +12,17 @@ public class GlideAnalysis {
     //TransformedResource：裁剪等处理后的资源
     //TranscodedResource: 转码后的资源，统一将bitmap转glideBitmapDrawable
     //Target：显示的目标
+     第一步：1，通过GlideBuilder构建Glide，GlideBuilder成员变量RequestManagerRetriever请求检索器同时生成，build得到Glide，全局单例
+             2，获取到RequestManagerRetriever检索器，并根据不同上下文，得到请求管理器RequestManager（Activity情况下特殊处理：Glide就使用了添加隐藏Fragment来监听Activity，如果Activity被销毁了，Fragment是可以监听到的）
+     第二步：通过RequestManager的RequestBuilder保存路径在Object model中；
+     第三步：1，glide.buildImageViewTarget()方法，构建出了一个GlideDrawableImageViewTarget对象
+             2，构建一个Request，实际用来请求网络的对象，他的实际实现类为SingleRequest，这个Request保存了placeholder等参数
+             3，先将SingleRequest交给RequestManager，RequestManager里有一个RequestTracker，来做排队
+             4，SingleRequest里有一个Engine对象，从网络加载还是从缓存加载，都由他来处理
+             5，EngineJob是Engine构造出来进行网络请求的，他持有了线程池和Runnable对象DecodeJob；
+             6，DecodeJob又持有一个DataFetcher，执行DecodeJob的run方法时，将调用loadData请求网络
+
+
     Glide.with(getApplicationContext() )
     ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public class Glide implements ComponentCallbacks2 {
@@ -87,7 +98,9 @@ public class GlideAnalysis {
 
         //RequestManager是真正用于管理图片网络请求的类
         public class RequestManager implements LifecycleListener,ModelTypes<RequestBuilder<Drawable>> {
-
+            public RequestBuilder<Drawable> load(@Nullable String string) {
+              return asDrawable().load(string);
+            }
 
         }
 
